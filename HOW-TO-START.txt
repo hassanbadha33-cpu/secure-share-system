@@ -1,0 +1,55 @@
+========================================================
+  SECURE SHARE SYSTEM - HOW TO START (2 MINUTES)
+========================================================
+
+STEP 1 - Install Node.js (only once)
+  Go to:  https://nodejs.org
+  Click the big green button "LTS" and install it.
+  (Just click Next / Next / Next in the installer.)
+
+STEP 2 - Unzip this folder
+  Right-click the zip file and choose "Extract All"
+  (or double-click it on a Mac).
+
+STEP 3 - Start the website
+  WINDOWS:  double-click the file:   start.bat
+  MAC:      double-click the file:   start.command
+            (If Mac says it is blocked, right-click start.command
+             -> Open -> Open. Do this once.)
+
+STEP 4 - Use it
+  Your browser opens automatically at  http://127.0.0.1:3000
+  Log in with any demo account:
+      admin    / Admin@123     (Administrator - Mohamed Ahmed)
+      manager  / Manager@123   (Manager)
+      employee / Employee@123  (Employee)
+
+DONE!  To stop the server, close the black/terminal window.
+
+--------------------------------------------------------
+TROUBLESHOOTING
+--------------------------------------------------------
+- "Node.js was not found"  ->  do Step 1, then try Step 3 again.
+- Nothing happens when I double-click start.command (Mac)
+  ->  open Terminal, type:  cd (drag the folder here)  then:  ./start.command
+- Site says "already in use"  ->  it is already running, just open
+  http://127.0.0.1:3000 in your browser.
+- Need help?  Ask the person who sent you this file.
+========================================================
+
+EMAIL ADMIN 2FA
+---------------
+The project still runs with:
+
+  node server.js
+
+For real email verification codes:
+
+  npm install
+  copy .env.example .env
+
+Then edit .env with your SMTP email settings and run:
+
+  node server.js
+
+For Gmail, use a Gmail App Password, not your normal Gmail password.

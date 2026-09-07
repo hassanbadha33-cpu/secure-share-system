@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register — Secure Share System</title>
+  <meta name="description" content="Create a Secure Share account for encrypted file sharing">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="auth-body auth-body-premium">
+  <main class="auth-shell auth-shell-register">
+    <section class="auth-card auth-card-pro" aria-label="Registration form">
+      <div class="brand brand-center brand-premium">
+        <div class="brand-logo"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div>
+          <h1>Secure Share<small>Corporate Data Protection</small></h1>
+        </div>
+      </div>
+
+      <h2 class="auth-title">Create your account</h2>
+      <p class="auth-sub">New accounts are registered with the Employee role and can access uploaded/shared files after sign in.</p>
+
+      <div id="alert" class="alert alert-error" role="alert"></div>
+
+      <form id="register-form" novalidate>
+        <div class="field">
+          <label for="full_name">Full Name</label>
+          <input type="text" id="full_name" name="full_name" placeholder="e.g. Mohamed Ahmed" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="3–30 characters (letters, numbers, . _ -)" autocomplete="username" required>
+          <div class="hint">Tip: a username will be suggested from your full name.</div>
+        </div>
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-field">
+            <input type="password" id="password" name="password" placeholder="Min 8 chars, upper, lower & number" autocomplete="new-password" required>
+            <button type="button" id="toggle-register-password" aria-label="Show password">Show</button>
+          </div>
+          <div class="password-meter"><div id="meter-bar"></div></div>
+          <div class="password-checks" id="password-checks">
+            <span data-check="length">8+ characters</span>
+            <span data-check="upper">Uppercase</span>
+            <span data-check="lower">Lowercase</span>
+            <span data-check="number">Number</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="confirm">Confirm Password</label>
+          <input type="password" id="confirm" name="confirm" placeholder="Repeat your password" autocomplete="new-password" required>
+        </div>
+        <label class="check-row">
+          <input type="checkbox" id="policy-check" required>
+          <span>I understand that files will be protected through encrypted storage and role-based access control.</span>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="register-btn">Create secure account</button>
+      </form>
+
+      <div class="auth-footer auth-footer-strong">
+        Already have an account? <a href="/login.html">Sign in</a>
+      </div>
+    </section>
+
+    <section class="auth-hero-panel register-side" aria-label="Registration benefits">
+      <div class="hero-kicker">Account Setup</div>
+      <h1>Every user enters with a defined access boundary.</h1>
+      <p class="hero-lead">The system separates identity, role, file ownership, sharing permissions, and activity tracking.</p>
+
+      <div class="step-list">
+        <div><strong>1</strong><span>Create employee account</span></div>
+        <div><strong>2</strong><span>Sign in with secure session cookie</span></div>
+        <div><strong>3</strong><span>Upload files for automatic encryption</span></div>
+        <div><strong>4</strong><span>Share files with permission control</span></div>
+      </div>
+
+      <div class="hero-warning">
+        <strong>Presentation note:</strong> This version demonstrates real local encryption, RBAC screens, CSRF-protected sessions, and activity logs for your project defense.
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/register.js"></script>
+</body>
+</html>

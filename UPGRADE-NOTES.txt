@@ -1,0 +1,82 @@
+Secure Share System — Final Professional Upgrade
+================================================
+
+This version improves the project after defense feedback on the Shared with Me page.
+
+Main fix:
+- View-only shared files now have a real working Preview action.
+- Download is still blocked for view-only users.
+- Download-permission users can preview and download.
+- View-once access is now supported: after one successful preview, access is consumed.
+- Share expiry is now supported: owners can set no expiry, 1 day, 3 days, 7 days, 14 days, or 30 days.
+
+Backend improvements:
+- GET /api/files/:id/preview now performs server-side permission checks before decryption.
+- GET /api/files/:id/download checks permission, expiry, and share status before streaming decrypted content.
+- POST /api/files/:id/share now supports:
+  * permission: view or download
+  * expiry_days: 0, 1, 3, 7, 14, 30
+  * view_once: true/false
+- File details now include access history.
+- Activity logs now record preview, download, denied access, view-once consumed, share, and revoke events.
+- Security overview API added: GET /api/security/overview.
+
+Frontend improvements:
+- Shared with Me page now clearly shows: View Only, Download, View Once, Expired/Used, and Active states.
+- My Files share modal now has a professional permission matrix, expiry selector, and View Once option.
+- File Info modal now shows people with access, expiry, status, last access, revoke button, and recent history.
+- Security Center now shows live security metrics and a permission model table.
+- Dashboard now includes security metrics such as view-only shares, download shares, view-once shares, and blocked attempts.
+
+Demo cases included:
+- View-only file: preview allowed, download blocked.
+- Download file: preview and download allowed.
+- View-once file: first preview works, second preview is blocked.
+- Expiring file share: access can expire automatically.
+
+Run:
+  node server.js
+
+Demo accounts:
+  admin / Admin@123
+  manager / Manager@123
+  employee / Employee@123
+
+Reset demo data:
+  npm run db:reset
+
+Professional Identity Upgrade
+-----------------------------
+- Added a polished administrator profile image to the project UI.
+- Topbar, sidebar, profile page, dashboard account card, login page, and user table now show a professional admin identity instead of initials only.
+- This is a presentation/UI enhancement only; access control is still enforced by backend RBAC and session checks, not by the photo.
+- The image is stored locally under public/assets/admin-profile.png and never affects authentication or authorization.
+
+
+ADMIN 6-DIGIT VERIFICATION UPDATE
+----------------------------------
+This version adds a second login step for administrator accounts.
+
+How it works:
+1. Admin enters username/password.
+2. Backend verifies password but does not create a session yet.
+3. Backend generates a temporary 6-digit verification code.
+4. The code is printed in the server terminal and shown in the demo UI for local learning.
+5. Admin enters the code.
+6. Only after successful verification does the backend create the authenticated session.
+
+Important security note:
+The on-screen demo code is included only to make the local project easy to test. In real deployment, the code should be delivered by email, SMS, or an authenticator app and should never be returned to the browser.
+
+EMAIL-READY ADMIN 2FA UPDATE
+----------------------------
+- Added optional SMTP email delivery for admin 6-digit verification codes.
+- Added .env and .env.example support without requiring dotenv.
+- Added nodemailer dependency for SMTP transport.
+- OTP codes are now hashed in memory rather than stored as plain text.
+- OTP verification uses timing-safe comparison.
+- Browser no longer receives the OTP when email delivery is configured.
+- If email settings are missing, the system falls back to terminal mode so the project still runs locally.
+- Security Center now reports whether OTP is running in Email Mode or Terminal Mode.
+
+See EMAIL-2FA-SETUP.txt for setup instructions.

@@ -1,0 +1,35 @@
+BUSINESS-READY SETUP GUIDE
+
+Prepared emails:
+- Sender: systemsecureshare@gmail.com
+- Receiver: hassanbadha33@gmail.com
+
+Only the Gmail App Password must be private.
+
+1) Gmail sender account requirements
+- Log into systemsecureshare@gmail.com
+- Turn on 2-Step Verification
+- Create a Gmail App Password named Secure Share
+- Copy the 16-character App Password immediately
+
+2) Project setup
+Open terminal in this folder and run:
+
+npm install
+npm run setup:email
+npm run check:email
+node server.js
+
+3) Browser login
+Open http://127.0.0.1:3000
+Login as admin / Admin@123
+Enter the OTP sent to hassanbadha33@gmail.com
+
+4) If email fails
+- Confirm the app password belongs to systemsecureshare@gmail.com
+- Confirm SMTP_PASS has the Gmail App Password, not normal password
+- Confirm internet is working
+- Run npm run check:email and read the exact error
+
+5) Selling/productization reminder
+This is a strong prototype. Before selling to real clients, add HTTPS deployment, a license, backup/restore, client onboarding docs, and environment-specific secrets.

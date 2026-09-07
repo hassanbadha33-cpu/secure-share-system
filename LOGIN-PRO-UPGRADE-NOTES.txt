@@ -1,0 +1,24 @@
+Secure Share — Professional Login Page Upgrade
+
+What changed:
+- Login screen now displays the Professional Upgrade clearly.
+- Added visible security badges: Email 2FA, Password Recovery, AES-256-GCM, Audit Integrity, Security Alerts, View-Once Sharing.
+- Added system status cards: Email OTP, Password Reset, Audit Logging, Encryption.
+- Expanded demo account section to show Admin, Security Officer, Auditor, Manager, Employee, HR Officer, Finance Officer and External Partner.
+- Added Caps Lock warning on the password field.
+- Improved Forgot Password modal with a 3-step flow: Identify, Verify, Reset.
+- Improved user-facing login and reset error messages.
+- Added demo users to the database and seed logic: hr, finance, partner.
+
+Demo credentials:
+admin    / Admin@123
+security / Security@123
+auditor  / Auditor@123
+manager  / Manager@123
+employee / Employee@123
+hr       / Hr@12345
+finance  / Finance@123
+partner  / Partner@123
+
+Reminder:
+Fill .env with OTP_SECRET and SMTP_PASS before testing email OTP and password reset.

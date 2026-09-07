@@ -1,0 +1,24 @@
+node_modules/
+.env
+*.env
+.DS_Store
+Thumbs.db
+.vscode/
+
+# SQLite local database/runtime files
+secure-share.db
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# Runtime file storage / logs
+storage/
+uploads/
+files/
+tmp/
+logs/
+
+# Optional private/project report source
+research.pdf

@@ -1,0 +1,73 @@
+SECURE SHARE — EMAIL ADMIN 2FA SETUP
+====================================
+
+This version supports real email-based 6-digit admin verification.
+
+FLOW
+----
+1. Admin enters username/email + password.
+2. Backend verifies password.
+3. Backend generates a 6-digit OTP.
+4. The OTP is hashed in memory, not stored as plain text.
+5. The OTP is sent to the configured admin email through SMTP.
+6. Admin enters the OTP.
+7. Backend verifies the OTP, creates the session, and logs the event.
+
+QUICK SETUP
+-----------
+1. Open the project folder in terminal.
+2. Run:
+
+   npm install
+
+3. Copy .env.example to .env:
+
+   copy .env.example .env        (Windows PowerShell)
+   cp .env.example .env          (Mac/Linux/Git Bash)
+
+4. Generate OTP_SECRET:
+
+   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+
+5. Paste the generated value into OTP_SECRET inside .env.
+
+6. Configure SMTP values in .env.
+
+GMAIL EXAMPLE
+-------------
+For Gmail, do not use your normal Gmail password. Use a Gmail App Password.
+
+.env example:
+
+OTP_DELIVERY_MODE=email
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=yourgmail@gmail.com
+SMTP_PASS=your_16_character_app_password
+OTP_FROM="Secure Share <yourgmail@gmail.com>"
+OTP_TO_EMAIL=yourgmail@gmail.com
+
+Then run:
+
+   node server.js
+
+Login as:
+
+   admin / Admin@123
+
+After password verification, the 6-digit code should arrive by email.
+
+LOCAL FALLBACK
+--------------
+If email is not configured, nodemailer is not installed, or SMTP fails, the system falls back to terminal mode.
+This keeps the project easy to run while still supporting real email delivery when configured.
+
+SECURITY NOTES
+--------------
+- OTP codes expire after 5 minutes by default.
+- OTP codes are not stored as plain text.
+- Wrong OTP attempts are limited.
+- OTP events are written to the activity log.
+- The session is not created until OTP verification succeeds.
+- In real deployment, use HTTPS, secure environment variables, and never share SMTP credentials.

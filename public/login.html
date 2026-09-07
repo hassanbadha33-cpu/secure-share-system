@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login — Secure Share Professional</title>
+  <meta name="description" content="Professional Secure Share login with email 2FA, password recovery, advanced RBAC, audit integrity and security alerts.">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="auth-body auth-body-premium auth-login-upgraded">
+  <main class="auth-shell auth-shell-login-pro">
+    <section class="auth-hero-panel login-hero-pro" aria-label="Secure Share professional system overview">
+      <div>
+        <div class="hero-kicker hero-kicker-pro">Professional Security Workspace</div>
+        <h1>Verified access. Encrypted files. Accountable actions.</h1>
+        <p class="hero-lead">
+          Secure Share protects file access with email verification, password recovery, advanced role control, view-once sharing, audit integrity and security alerts.
+        </p>
+
+        <div class="login-feature-badges" aria-label="Security features">
+          <span>Email 2FA</span>
+          <span>Password Recovery</span>
+          <span>AES-256-GCM</span>
+          <span>Audit Integrity</span>
+          <span>Security Alerts</span>
+          <span>View-Once Sharing</span>
+        </div>
+      </div>
+
+      <div class="security-visual security-visual-pro" aria-hidden="true">
+        <div class="visual-orbit visual-orbit-one"></div>
+        <div class="visual-orbit visual-orbit-two"></div>
+        <div class="visual-lock visual-lock-pro">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="file-chip chip-a">Admin Login <span>Email OTP</span></div>
+        <div class="file-chip chip-b">Audit Trail <span>Hash-linked</span></div>
+        <div class="file-chip chip-c">Shared File <span>View-once</span></div>
+        <div class="file-chip chip-d">Reset Code <span>5 min expiry</span></div>
+      </div>
+
+      <div class="login-security-panel">
+        <div class="panel-title-row">
+          <strong>Security Operations Console</strong>
+          <span>Ready</span>
+        </div>
+        <div class="security-mini-grid">
+          <div><strong>Advanced RBAC</strong><span>Admin · Security · Auditor · Manager · Employee · HR · Finance · Partner</span></div>
+          <div><strong>Recovery Control</strong><span>Email reset code with expiry and attempt limits</span></div>
+          <div><strong>Audit Evidence</strong><span>Every sensitive action is logged for review</span></div>
+          <div><strong>Access Boundary</strong><span>Preview, download, expiry, revoke and view-once rules</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="auth-card auth-card-pro login-card-pro" aria-label="Login form">
+      <div class="brand brand-center brand-premium">
+        <div class="brand-logo"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div>
+          <h1>Secure Share<small>Professional File Encryption &amp; Secure Sharing</small></h1>
+        </div>
+      </div>
+
+      <div class="auth-heading-row auth-heading-row-pro">
+        <div>
+          <h2 class="auth-title">Welcome back</h2>
+          <p class="auth-sub">Sign in to your verified corporate workspace.</p>
+        </div>
+        <span class="status-pill status-pill-pro">Professional Upgrade</span>
+      </div>
+
+      <div class="system-status-grid" aria-label="System security status">
+        <div><strong>Email OTP</strong><span>Ready</span></div>
+        <div><strong>Password Reset</strong><span>Enabled</span></div>
+        <div><strong>Audit Logging</strong><span>Active</span></div>
+        <div><strong>Encryption</strong><span>AES-256-GCM</span></div>
+      </div>
+
+      <div id="alert" class="alert alert-error" role="alert"></div>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="username">Username or Email</label>
+          <input type="text" id="username" name="username" placeholder="admin or admin@securefiles.local" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <div class="label-row">
+            <label for="password">Password</label>
+            <button type="button" class="link-button" id="forgot-link">Forgot password?</button>
+          </div>
+          <div class="password-field">
+            <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required>
+            <button type="button" id="toggle-password" aria-label="Show password">Show</button>
+          </div>
+          <div id="caps-warning" class="caps-warning" role="status">Caps Lock is on.</div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="login-btn">Sign in securely</button>
+        <p class="auth-security-hint">Admin access requires a 6-digit email verification code. Failed attempts and reset events are logged.</p>
+      </form>
+
+      <section id="two-factor-panel" class="two-factor-panel two-factor-panel-pro" style="display:none" aria-label="Admin verification step">
+        <div class="two-factor-lock">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Admin verification required</h3>
+        <p class="auth-sub">Password accepted. Enter the 6-digit code sent by email before opening the administrator workspace.</p>
+        <div id="two-factor-hint" class="alert alert-info show two-factor-hint"></div>
+        <form id="two-factor-form" novalidate>
+          <div class="field">
+            <label for="two-factor-code">6-digit verification code</label>
+            <input type="text" id="two-factor-code" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="123456" autocomplete="one-time-code" class="code-input" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="verify-2fa-btn">Verify and open dashboard</button>
+        </form>
+        <div class="two-factor-actions">
+          <button type="button" class="link-button" id="resend-2fa-btn">Resend code</button>
+          <button type="button" class="link-button" id="back-login-btn">Back to password</button>
+        </div>
+      </section>
+
+      <div class="auth-divider"><span>Choose a demo account</span></div>
+
+      <div class="demo-grid demo-grid-pro" aria-label="Demo account quick access">
+        <button type="button" class="demo-card demo-card-primary" data-username="admin" data-password="Admin@123" data-label="Admin">
+          <strong>Admin</strong><span>Full users, files, logs, settings</span>
+        </button>
+        <button type="button" class="demo-card" data-username="security" data-password="Security@123" data-label="Security Officer">
+          <strong>Security Officer</strong><span>Alerts, reports, security center</span>
+        </button>
+        <button type="button" class="demo-card" data-username="auditor" data-password="Auditor@123" data-label="Auditor">
+          <strong>Auditor</strong><span>Read-only logs and reports</span>
+        </button>
+        <button type="button" class="demo-card" data-username="manager" data-password="Manager@123" data-label="Manager">
+          <strong>Manager</strong><span>Team files and review</span>
+        </button>
+        <button type="button" class="demo-card" data-username="employee" data-password="Employee@123" data-label="Employee">
+          <strong>Employee</strong><span>Upload and shared access</span>
+        </button>
+        <button type="button" class="demo-card" data-username="hr" data-password="Hr@12345" data-label="HR Officer">
+          <strong>HR Officer</strong><span>HR document workspace</span>
+        </button>
+        <button type="button" class="demo-card" data-username="finance" data-password="Finance@123" data-label="Finance Officer">
+          <strong>Finance Officer</strong><span>Finance document workspace</span>
+        </button>
+        <button type="button" class="demo-card" data-username="partner" data-password="Partner@123" data-label="External Partner">
+          <strong>External Partner</strong><span>Temporary shared-file access</span>
+        </button>
+      </div>
+
+      <div class="auth-footer auth-footer-strong">
+        Don't have an account? <a href="/register.html">Register here</a>
+      </div>
+
+      <div class="alert alert-info mt-2 auth-note auth-note-pro" id="demo-hint" style="display:block">
+        <strong>Demo accounts</strong> — admin / Admin@123 uses email verification · security / Security@123 · auditor / Auditor@123 · manager / Manager@123 · employee / Employee@123 · hr / Hr@12345 · finance / Finance@123 · partner / Partner@123
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+</html>

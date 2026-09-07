@@ -1,0 +1,23 @@
+Secure Share — Responsive Professional Upgrade
+
+What changed:
+- Login page now adapts cleanly on laptop, tablet and phone screens.
+- Large left hero panel hides on smaller screens so the login form is readable.
+- Demo account cards stack properly on phone screens.
+- Password recovery modal fits phone screens and scrolls safely.
+- Dashboard/sidebar becomes a horizontal mobile navigation instead of a squeezed sidebar.
+- Cards, tables, file rows, modals and toast messages have mobile-friendly behavior.
+- Tables keep horizontal scrolling instead of breaking the layout.
+- Preview page has responsive header, metadata and document frame.
+- Added a safe .gitignore so secrets, database files and runtime uploads are not pushed.
+
+Local test order:
+1. npm install
+2. npm run check:email
+3. node server.js
+4. Open http://127.0.0.1:3000
+5. Press CTRL + F5
+6. Test the browser in normal laptop width, narrow phone width and Chrome mobile device mode.
+
+Important:
+Do not upload .env, SMTP_PASS, OTP_SECRET, local database files or storage files to GitHub.

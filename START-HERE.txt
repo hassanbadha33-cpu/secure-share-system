@@ -1,0 +1,74 @@
+SECURE SHARE SYSTEM - PROFESSIONAL UPGRADE VERSION
+==================================================
+
+This ZIP includes the business-ready email OTP system plus new professional improvements:
+- Working Forgot Password with 6-digit email reset code
+- Admin email 2FA
+- Extended corporate roles
+- View-only, download, expiry and view-once sharing
+- Security alerts
+- Tamper-resistant audit logs
+- Security report export
+- Preview page UI fix
+- Stronger upload blocking/logging
+
+This ZIP is pre-configured for local demo:
+
+Sender Gmail:   systemsecureshare@gmail.com
+Receiver Gmail: hassanbadha33@gmail.com
+
+You only need to add:
+1. OTP_SECRET
+2. Gmail App Password
+
+EASIEST METHOD
+--------------
+1. Open terminal inside this folder.
+2. Run:
+
+   npm install
+   npm run setup:email
+
+3. Paste the Gmail App Password when asked.
+4. Test email:
+
+   npm run check:email
+
+5. Start project:
+
+   node server.js
+
+6. Open:
+
+   http://127.0.0.1:3000
+
+7. Login:
+
+   admin / Admin@123
+
+The admin OTP should be sent to hassanbadha33@gmail.com.
+Forgot Password reset codes also use the same email setup.
+
+MANUAL METHOD
+-------------
+Open .env and fill only these two lines:
+
+OTP_SECRET=PASTE_GENERATED_64_CHARACTER_SECRET_HERE
+SMTP_PASS=PASTE_GMAIL_APP_PASSWORD_HERE
+
+Generate OTP_SECRET with:
+
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+
+DEMO ACCOUNTS
+-------------
+admin    / Admin@123
+manager  / Manager@123
+employee / Employee@123
+auditor  / Auditor@123
+security / Security@123
+
+IMPORTANT SECURITY NOTE
+-----------------------
+Never share your .env file, OTP_SECRET or Gmail App Password.
+Before selling or sharing this system, regenerate OTP_SECRET and create a new Gmail App Password.

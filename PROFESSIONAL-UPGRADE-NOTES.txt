@@ -1,0 +1,63 @@
+Secure Share System — Professional Upgrade Notes
+================================================
+
+This package upgrades the previous email-2FA version into a stronger professional prototype.
+
+Major fixes and improvements included:
+1. Working Forgot Password flow
+   - User enters username/email.
+   - System sends a 6-digit reset code by email or terminal fallback.
+   - Code expires after 5 minutes.
+   - Wrong-code attempts are limited.
+   - New password must satisfy the password policy.
+   - Existing sessions are revoked after reset.
+
+2. Email-ready password reset
+   - Reuses the same SMTP/App Password setup used by admin 2FA.
+   - PASSWORD_RESET_TO_EMAIL can be used during local demo so reset codes go to the tester inbox.
+
+3. Extended corporate roles
+   - admin
+   - security_officer
+   - auditor
+   - manager
+   - employee
+   - hr_officer
+   - finance_officer
+   - external_partner
+
+4. Security alerts
+   - High-risk actions create alerts, including blocked access, lockouts, failed OTP/reset activity, and blocked uploads.
+   - Security Center shows recent alerts and open-alert counts.
+
+5. Tamper-resistant audit logs
+   - Each activity log stores prev_hash and entry_hash.
+   - Security Center verifies the audit chain.
+   - Security report export includes audit-integrity status.
+
+6. Security report export
+   - Security Center includes an Export Security Report button.
+   - Report includes system controls, counts, alerts, audit integrity, and recent logs.
+
+7. Preview UI fix
+   - The confusing fake-looking VIEW MODE badge was changed into a clear status badge.
+   - A real Back to Dashboard button was added.
+
+8. Upload security hardening
+   - Unsupported file types are blocked and logged.
+   - Dangerous MIME types are blocked and logged.
+
+Recommended start commands:
+1. npm install
+2. npm run check:email
+3. node server.js
+
+Demo accounts after database reset:
+- admin / Admin@123
+- manager / Manager@123
+- employee / Employee@123
+- auditor / Auditor@123
+- security / Security@123
+
+Security reminder:
+Never share the .env file, OTP_SECRET, or Gmail App Password. Regenerate secrets before sharing or selling the project.

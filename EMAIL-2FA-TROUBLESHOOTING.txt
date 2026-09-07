@@ -1,0 +1,25 @@
+Secure Share — Email 2FA Troubleshooting
+
+If the browser says "Internal server error" during admin login, check the terminal running `node server.js`.
+The most common cause is SMTP authentication failure or wrong .env values.
+
+Quick local fix:
+1. Open .env
+2. Set OTP_DELIVERY_MODE=terminal
+3. Save the file
+4. Stop server with Ctrl+C
+5. Run node server.js again
+6. Login as admin; the 6-digit code will appear in the terminal.
+
+Email mode checklist:
+- Run npm install once.
+- Use Gmail App Password, not the normal Gmail password.
+- Make sure 2-Step Verification is enabled on the Gmail account.
+- SMTP_HOST=smtp.gmail.com
+- SMTP_PORT=465
+- SMTP_SECURE=true
+- SMTP_USER=your Gmail address
+- SMTP_PASS=your 16-character app password, preferably without spaces
+- OTP_TO_EMAIL=where the code should be sent
+
+This build has a safe fallback: if email delivery fails, it prints the code in the terminal instead of crashing the app.
